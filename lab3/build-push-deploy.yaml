@@ -44,7 +44,7 @@ spec:
     - name: generate-artifact
       params:
         - name: MAVEN_IMAGE
-          value: gcr.io/cloud-builders/mvn
+          value: registry.access.redhat.com/ubi8/openjdk-11:1.3
         - name: GOALS
           value:
             - package
@@ -81,7 +81,7 @@ spec:
         - name: FORMAT
           value: oci
       runAfter:
-        - maven
+        - generate-artifact
       taskRef:
         kind: ClusterTask
         name: buildah
