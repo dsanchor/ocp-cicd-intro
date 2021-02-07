@@ -1,0 +1,8 @@
+# we will create group that it has a single user: itself
+# usefull for argocd labs.. to avoid mixing resources
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: ${USER}
+users:
+  - ${USER}

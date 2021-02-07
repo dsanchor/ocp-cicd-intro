@@ -1,0 +1,10 @@
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3
+
+RUN microdnf install git findutils openssh-clients gettext tar -y && microdnf clean all
+
+RUN curl -s "https://raw.githubusercontent.com/\
+kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+
+RUN cp /kustomize /usr/bin/kustomize
+
+

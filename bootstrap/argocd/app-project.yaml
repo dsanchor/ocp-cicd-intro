@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ${USER}
+  namespace: ${CICD_NS}
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - namespace: ${USER}
+      server: '*'
+    - namespace: ${USER}-dev
+      server: '*'
+    - namespace: ${USER}-prod
+      server: '*'
+  sourceRepos:
+    - '*'
+  roles:
+  # A role which provides all  access to all applications in the project
+  - name: master
+    description: Master privileges to ${USER} in ${USER} ns
+    policies:
+    - p, proj:${USER}:master, applications, *, ${USER}/*, allow
+    - p, proj:${USER}:master, repositories, get, *, allow
+    groups:
+    - ${USER}
+  - name: master-dev
+    description: Master privileges to ${USER} in ${USER}-dev ns
+    policies:
+    - p, proj:${USER}:master-dev, applications, *, ${USER}-dev/*, allow
+    - p, proj:${USER}:master-dev, repositories, get, *, allow
+    groups:
+    - ${USER}
+  - name: master-prod
+    description: Master privileges to ${USER} in ${USER}-prod ns
+    policies:
+    - p, proj:${USER}:master-dev, applications, *, ${USER}-prod/*, allow
+    - p, proj:${USER}:master-dev, repositories, get, *, allow
+    groups:
+    - ${USER}

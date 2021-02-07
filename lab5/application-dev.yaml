@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quarkus-petclinic-<YOUR_DEV_PROJECT> # (Ex: quarkus-petclinic-user0-dev)
+spec:
+  destination:
+    namespace: <YOUR_DEV_PROJECT> # (Ex: user0-dev)
+    name: in-cluster
+  project: <YOUR_ARGOCD_PROJECT> # (Ex: user0)
+  source:
+    path: development
+    repoURL: 'https://github.com/<YOUR_GITHUB_ORG>/petclinic-config.git'
+    targetRevision: simple
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
