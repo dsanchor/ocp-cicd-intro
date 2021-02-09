@@ -3,6 +3,6 @@
 kind: Group
 apiVersion: user.openshift.io/v1
 metadata:
-  name: ${USER}
+  name: ${USER_NS}
 users:
   - ${USER}

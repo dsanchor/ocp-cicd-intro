@@ -1,41 +1,41 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: ${USER}
+  name: ${USER_NS}
   namespace: ${CICD_NS}
 spec:
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
   destinations:
-    - namespace: ${USER}
+    - namespace: ${USER_NS}
       server: '*'
-    - namespace: ${USER}-dev
+    - namespace: ${USER_NS}-dev
       server: '*'
-    - namespace: ${USER}-prod
+    - namespace: ${USER_NS}-prod
       server: '*'
   sourceRepos:
     - '*'
   roles:
   # A role which provides all  access to all applications in the project
   - name: master
-    description: Master privileges to ${USER} in ${USER} ns
+    description: Master privileges to ${USER_NS} in ${USER_NS} ns
     policies:
-    - p, proj:${USER}:master, applications, *, ${USER}/*, allow
-    - p, proj:${USER}:master, repositories, get, *, allow
+    - p, proj:${USER_NS}:master, applications, *, ${USER_NS}/*, allow
+    - p, proj:${USER_NS}:master, repositories, get, *, allow
     groups:
-    - ${USER}
+    - ${USER_NS}
   - name: master-dev
-    description: Master privileges to ${USER} in ${USER}-dev ns
+    description: Master privileges to ${USER_NS} in ${USER_NS}-dev ns
     policies:
-    - p, proj:${USER}:master-dev, applications, *, ${USER}-dev/*, allow
-    - p, proj:${USER}:master-dev, repositories, get, *, allow
+    - p, proj:${USER_NS}:master-dev, applications, *, ${USER_NS}-dev/*, allow
+    - p, proj:${USER_NS}:master-dev, repositories, get, *, allow
     groups:
-    - ${USER}
+    - ${USER_NS}
   - name: master-prod
-    description: Master privileges to ${USER} in ${USER}-prod ns
+    description: Master privileges to ${USER_NS} in ${USER_NS}-prod ns
     policies:
-    - p, proj:${USER}:master-dev, applications, *, ${USER}-prod/*, allow
-    - p, proj:${USER}:master-dev, repositories, get, *, allow
+    - p, proj:${USER_NS}:master-dev, applications, *, ${USER_NS}-prod/*, allow
+    - p, proj:${USER_NS}:master-dev, repositories, get, *, allow
     groups:
-    - ${USER}
+    - ${USER_NS}

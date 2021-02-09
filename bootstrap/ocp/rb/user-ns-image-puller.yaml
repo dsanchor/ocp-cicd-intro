@@ -1,12 +1,12 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: system:image-puller-${USER}-dev
-  namespace: ${USER}
+  name: system:image-puller-${USER_NS}-dev
+  namespace: ${USER_NS}
 subjects:
   - kind: Group
     apiGroup: rbac.authorization.k8s.io
-    name: 'system:serviceaccounts:${USER}-dev'
+    name: 'system:serviceaccounts:${USER_NS}-dev'
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -15,12 +15,12 @@ roleRef:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: system:image-puller-${USER}-prod
-  namespace: ${USER}
+  name: system:image-puller-${USER_NS}-prod
+  namespace: ${USER_NS}
 subjects:
   - kind: Group
     apiGroup: rbac.authorization.k8s.io
-    name: 'system:serviceaccounts:${USER}-prod'
+    name: 'system:serviceaccounts:${USER_NS}-prod'
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

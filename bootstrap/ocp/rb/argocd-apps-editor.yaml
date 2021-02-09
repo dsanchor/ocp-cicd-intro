@@ -1,12 +1,12 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: ${USER}-argocd-apps-edit
+  name: ${USER_NS}-argocd-apps-edit
   namespace: ${CICD_NS}
 subjects:
   - kind: User
     apiGroup: rbac.authorization.k8s.io
-    name: ${USER}
+    name: ${USER_NS}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

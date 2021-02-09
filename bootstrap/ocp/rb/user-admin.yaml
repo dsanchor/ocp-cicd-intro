@@ -2,7 +2,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: admin
-  namespace: ${USER}
+  namespace: ${USER_NS}
 subjects:
   - kind: User
     apiGroup: rbac.authorization.k8s.io
@@ -16,7 +16,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: admin
-  namespace: ${USER}-dev
+  namespace: ${USER_NS}-dev
 subjects:
   - kind: User
     apiGroup: rbac.authorization.k8s.io
@@ -30,7 +30,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: admin
-  namespace: ${USER}-prod
+  namespace: ${USER_NS}-prod
 subjects:
   - kind: User
     apiGroup: rbac.authorization.k8s.io
