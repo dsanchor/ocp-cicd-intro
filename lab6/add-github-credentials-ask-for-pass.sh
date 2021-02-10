@@ -10,7 +10,7 @@ read -s -p "Enter Password  : " PASSWORD
 echo " "
 
 echo "Creating secret with github credentials for user $USERNAME"
-cat $(pwd)/lab6/git-secret.yaml | USERNAME=$USERNAME \
+cat $(pwd)/git-secret.yaml | USERNAME=$USERNAME \
   PASSWORD=${PASSWORD} envsubst | oc apply -f - -n $NS 
 
 echo "Linking pipeline sa in namespace $NS with your github crendentials"
