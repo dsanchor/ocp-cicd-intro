@@ -129,7 +129,7 @@ spec:
 
         popd
     - name: push-manifest-to-git
-      image: quay.io/dsanchor/ubi8-git-kust:0.0.1
+      image: docker.io/alpine/git:v2.26.2@sha256:23618034b0be9205d9cc0846eb711b12ba4c9b468efdd8a59aac1d7b1a23363f
       script: |
         #!/bin/sh
         set -eu -o pipefail

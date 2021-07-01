@@ -83,7 +83,7 @@ spec:
           value: >-
             registry.redhat.io/rhel8/buildah@sha256:180c4d9849b6ab0e5465d30d4f3a77765cf0d852ca1cb1efb59d6e8c9f90d467
         - name: STORAGE_DRIVER
-          value: overlay
+          value: vfs
         - name: DOCKERFILE
           value: $(params.dockerfile)
         - name: CONTEXT
