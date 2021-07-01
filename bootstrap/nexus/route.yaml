@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: nexus
+  labels:
+    app: nexus
+spec:
+  to:
+    kind: Service
+    name: nexus
+    weight: 100
+  port:
+    targetPort: 8081-tcp
+  wildcardPolicy: None
