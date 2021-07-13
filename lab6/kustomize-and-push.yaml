@@ -135,7 +135,7 @@ spec:
         set -eu -o pipefail
 
         CONFIG_DIR="$(workspaces.config.path)/$(params.config-subdirectory)"        
-        pushd $CONFIG_DIR
+        cd $CONFIG_DIR
 
         git config --global user.email "bot@tekton-pipelines.dev"
         git config --global user.name "tekton-pipelines-bot"

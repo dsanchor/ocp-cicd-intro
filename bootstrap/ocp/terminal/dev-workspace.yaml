@@ -1,0 +1,17 @@
+apiVersion: workspace.devfile.io/v1alpha1
+kind: DevWorkspace
+metadata:
+  annotations:
+    controller.devfile.io/restricted-access: 'true'
+  name: web-terminal
+  namespace: ${USER_NS}-terminal
+  labels:
+    console.openshift.io/terminal: 'true'
+spec:
+  routingClass: web-terminal
+  started: true
+  template:
+    components:
+      - plugin:
+          id: redhat-developer/web-terminal/4.5.0
+          name: web-terminal

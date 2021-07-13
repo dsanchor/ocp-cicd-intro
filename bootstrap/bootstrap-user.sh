@@ -26,3 +26,10 @@ cat ./argocd/app-project.yaml | USER_NS=$USER_NS CICD_NS=$CICD_NS envsubst | oc 
 
 echo "Adding ArgoCD Apps edit role for user ${USER_NS}"
 cat ./ocp/rb/argocd-apps-editor.yaml | USER_NS=$USER_NS CICD_NS=$CICD_NS envsubst | oc apply -f -
+
+echo "Creating terminal..."
+cat ./ocp/terminal/dev-workspace.yaml | USER_NS=$USER_NS envsubst | oc apply -f -
+
+echo "Creating exports"
+cat ./ocp/terminal/configmap.yaml | USER_NS=$USER_NS USER=$USER \
+ PASSWORD=$USER_NS envsubst | oc apply -f -

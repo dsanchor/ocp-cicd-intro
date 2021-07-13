@@ -1,0 +1,16 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: user-config
+  namespace: ${USER_NS}-terminal
+data:
+  env: |-
+    OCP_CONSOLE=https://console-openshift-console.apps.labs.sandbox1256.opentlc.com/
+    OCP_API=https://api.labs.sandbox1256.opentlc.com:6443
+    USER=${USER}
+    PASSWORD=${PASSWORD}
+    CICD_NS=cicd
+    SONAR_TOKEN=2e214f4125f190367227a3e9e48724d1dc76a72e
+    APPS_NS=${USER_NS}
+    APPS_DEV_NS=${USER_NS}-dev
+    APPS_PROD_NS=${USER_NS}-prod

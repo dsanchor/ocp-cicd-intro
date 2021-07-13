@@ -1,0 +1,8 @@
+# See https://github.com/helm/chart-testing#configuration
+remote: origin
+chart-dirs:
+  - charts
+chart-repos:
+  - bitnami=https://charts.bitnami.com/bitnami
+  - ingress-nginx=https://kubernetes.github.io/ingress-nginx
+helm-extra-args: --timeout 600s

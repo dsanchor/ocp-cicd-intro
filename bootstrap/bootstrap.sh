@@ -39,6 +39,6 @@ cat ./argocd/controller-rb.yaml  | CICD_NS=$CICD_NS envsubst | oc apply -f -
 echo "Create argocd-manager group"
 cat ./ocp/groups/argocd-manager.yaml | ADMIN_USER=$ADMIN_USER envsubst | oc apply -f -
 
-echo "Installing SonarQube"
+# echo "Installing SonarQube"
 
-oc process -f sonarqube/sonarqube-template.yaml | oc apply -f - -n $CICD_NS
+# oc process -f sonarqube/sonarqube-template.yaml | oc apply -f - -n $CICD_NS
